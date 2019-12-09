@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aiken的圣诞魔法</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/photograph.css">
+    <script>
+        var scale = window.screen.width / 750
+        document.write(
+            `<meta name="viewport" content="width=750, user-scalable=no, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}">`
+        )
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="select-sex">
+            <div sex="1">
+                <div class="template"></div>
+                <img src="../images/man.png" alt="" class="sex">
+            </div>
+            <div sex="2">
+                <div class="template"></div>
+                <img src="../images/woman.png" alt="" class="sex">
+            </div>
+        </div>
+        <div class="select" id="add">
+            <div class="imgSrcDiv"><img src="" alt="" id="imgSrc"></div>
+
+            <div class="loading">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="btn" id="btn">
+            <div class="zg">上传您的照片</div> 
+        </div>
+
+        <div style="height: 144px;">
+        </div>
+    </div>
+    <input type="file" id="camera" capture="camera" accept="image/*" class="hide">
+    <div class="dialog">
+        <video src="" id="video"></video>
+        <div class="btn pz" style="position: absolute;left:50%;margin-left:-170px;bottom:10%">点击拍照</div>
+        <canvas id="canvas" class="hide"></canvas>
+    </div>
+</body>
+<script src="../js/public.js"></script>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/exif.js"></script>
+<script src="../js/photograph.js"></script>
+
+</html>

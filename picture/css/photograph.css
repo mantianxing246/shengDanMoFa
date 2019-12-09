@@ -1,0 +1,106 @@
+.select-sex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #78584c;
+    margin: 308px 0 68px;
+    text-align: center;
+}
+
+.select-sex img {
+    width: 200px;
+}
+
+.select-sex>div {
+    position: relative;
+}
+.select-sex>div:nth-of-type(1){
+    margin-right: 12vw;
+}
+#active {
+    width: 200px;
+    height: 90px;
+    box-shadow: 0px 0px 50px #00a6ff;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+.select {
+    margin: 0 10.9vw;
+    position: relative;
+    height: 642px;
+    background: url("../images/kuang.png") no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+#imgSrc {
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+}
+.imgSrcDiv{
+    padding: 6px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none;
+}
+
+.btn {
+    width: 340px;
+    height: 120px;
+    background: url("../images/btn.png") no-repeat;
+    background-size: 100% 100%;
+    margin: 82px auto 0px;
+    color: #fff;
+    font-size: 38px;
+    text-align: center;
+    line-height: 105px;
+}
+
+.btn-zg {
+    animation: zg 2s ease;
+}
+
+@keyframes zg {
+    from {
+        background: url("../images/btn-zg.png") no-repeat;
+        background-size: 100% 100%;
+        width: 340px;
+        height: 120px;
+    }
+
+    to {}
+}
+
+.dialog {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 7, 31, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 38px;
+    text-align: center;
+    display: none;
+}
+
+.dialog video {
+    width: 80%;
+    height: 60%;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    margin-left: -40%;
+}
+.dialog canvas{
+    width:90px;
+    height:150px;
+}

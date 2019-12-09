@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aiken的圣诞魔法</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script>
+        var scale = window.screen.width / 750
+        document.write(
+            `<meta name="viewport" content="width=750, user-scalable=no, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}">`
+        )
+    </script>
+    <style>
+        .container {
+            background-image: url("../images/bj2.png");
+        }
+
+        .select {
+            margin: 376px 9vw 52px;
+            position: relative;
+            background: url("../images/kuang3.png") no-repeat;
+            background-size: 100% 100%;
+            height: 640px;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+
+        .select>div {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .select img {
+            width: 100%;
+        }
+
+        .select-mode {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .select-mode>div {
+            width: 202px;
+            height: 104px;
+            margin-right: 90px;
+        }
+
+        .select-mode>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .select-mode #active, #active2{
+            width: 202px;
+            height: 90px;
+        }
+        .select-mode #active{
+            box-shadow: 0px 0px 40px #00a6ff;
+        }
+        .select-mode #active2 {
+            box-shadow: 0px 0px 40px #c82960;
+        }
+
+        #img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="select">
+            <div>
+                <img src="" alt="" id="img">
+            </div>
+        </div>
+        <div class="select-mode">
+            <div id="palyAgain">
+                <div>
+                    <img src="../images/btn1.png" alt="">
+                </div>
+            </div>
+            <div id="share">
+                <div><img src="../images/btn2.png" alt=""></div>
+            </div>
+        </div>
+        <div style="height: 169px;"></div>
+    </div>
+</body>
+<script src="../js/public.js"></script>
+<script src="../js/zepto.min.js"></script>
+<script>
+    const palyAgain = $("#palyAgain")
+    const share = $("#share")
+    const uuid = location.href.split("=")[1]
+    // const uuid = "1u7Vl955y993gys9"
+    getImg()
+    setSelectHeight()
+    stopPageSwiper()
+
+    function getImg() {
+        $.ajax({
+            url: URL + "/christmas/api/christmas/getImg/" + uuid,
+            type: "GET",
+            success: function (res) {
+                const data = res.data
+                $(".select img").attr({
+                    src: URL + "/" + data.userImageUrl
+                })
+            },
+            fail: function () {}
+        })
+    }
+    palyAgain.click(function () {
+        location.href = "../index.html"
+        $("#palyAgain>div").attr({
+            id: "active"
+        })
+    })
+    share.click(function () {
+        alert("请点击右上角分享功能")
+        $("#share>div").attr({
+            id: "active2"
+        })
+    })
+
+    if (pageHeight()) {
+        $(".container").addClass("heightPage")
+    }
+
+    //分享
+    $.ajax({
+        type: 'post',
+        url: "http://ferrari.3tilabs.com/api/share",
+        data: {
+            url: location.href,
+        },
+        success: function (res) {
+            var json_res = JSON.parse(res)
+            wx.config({
+                appId: json_res.appid, // 必填，公众号的唯一标识
+                timestamp: json_res.timestamp, // 必填，生成签名的时间戳
+                nonceStr: json_res.nonceStr, // 必填，生成签名的随机串
+                signature: json_res.signature, // 必填，签名
+                jsApiList: [
+                    'onMenuShareAppMessage',
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            })
+            // console.log(json_res)
+
+            wx.ready(function () {
+                //分享
+                wx.onMenuShareAppMessage({
+                    // title: '法拉利车主服务|车主认证', // 分享标题
+                    // desc: '邀您完成车主认证，尊享法拉利优质服务', // 分享描述
+                    link: 'http://192.168.2.205:8080?uuid'+uuid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    // imgUrl: 'https://ferrari.3tilabs.com/h5/images/share.jpg', // 分享图标
+                    success: function () {
+                        // 用户点击了分享后执行的回调函数
+                    }
+                });
+            })
+        },
+        error() {
+
+        }
+    })
+</script>
+
+</html>

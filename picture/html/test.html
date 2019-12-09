@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            width: 400px;
+            height: 200px;
+            background: red;
+        }
+        /* #img{
+            width: 200px;
+            height: 50px;
+        } */
+    </style>
+</head>
+<body>
+    <img src="../images/btn.png" alt="" id="img">
+    <canvas id="canvas"></canvas>
+</body>
+<script src="../js/zepto.min.js"></script>
+<script>
+    const img=document.getElementById("img")
+    const canvas=document.getElementById("canvas")
+    const ctx=canvas.getContext('2d');
+    const abc=0
+    img.onload=function(){
+        ctx.drawImage(img,0,0,200,50,0,0,200,50)
+    }
+   
+    $("#img").click(function(){
+        alert(1)
+    })
+
+</script>
+</html> 

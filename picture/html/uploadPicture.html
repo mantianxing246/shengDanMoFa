@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aiken的圣诞魔法</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <script>
+        var scale = window.screen.width / 750
+        document.write(
+            `<meta name="viewport" content="width=750, user-scalable=no, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}">`
+        )
+    </script>
+    <style>
+        .select-sex {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            font-size: 24px;
+            color: #78584c;
+            margin: 149px 0 31px;
+            text-align: center;
+        }
+
+        .select-sex img {
+            width: 100%;
+            height: 103px;
+        }
+
+        .select-sex #active {
+            border: 3px solid red;
+            box-sizing: border-box;
+        }
+
+        .select-sex>div {
+            width: 124px;
+            height: 147px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+            border: 3px solid transparent;
+        }
+
+        .select {
+            margin: 0 68px;
+            position: relative;
+            background: url("../images/kuang.png") no-repeat;
+            background-size: 100% 100%;
+            height: 817px;
+        }
+
+        .kuang {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            top: 24px;
+            bottom: 24px;
+            border-radius: 70%/50%;
+        }
+
+        .select-mode {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .select-mode>div {
+            width: 304px;
+            height: 84px;
+            background: url("../images/btn.png") no-repeat;
+            background-size: 100% 100%;
+            font-size: 36px;
+            color: #78584c;
+            text-align: center;
+            line-height: 84px;
+            margin: 91px auto 0;
+            display: block;
+        }
+
+        #img {
+            width: 100%;
+            height: 100%;
+            border-radius: 70%/50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="select-sex">
+            <div>
+                <img src="../images/man.png" alt="" class="sex" sex="1">
+                <div style="height:44px;line-height:44px">男</div>
+            </div>
+            <div>
+                <img src="../images/woman.png" alt="" class="sex" sex="2">
+                <div style="height:44px;line-height:44px">女</div>
+            </div>
+        </div>
+        <div class="select">
+            <div class="kuang">
+                <img src="" alt="" id="img">
+            </div>
+        </div>
+        <div class="select-mode">
+            <div id="upload">
+                确认上传
+            </div>
+        </div>
+        <div style="height: 138px;"></div>
+    </div>
+</body>
+<script src="../js/public.js"></script>
+<script src="../js/jquery.js"></script>
+<script>
+    const files = JSON.parse(sessionStorage.getItem("files"))
+    const upload = $("#upload")
+    upload.click(function () {
+        location.href = "./selectRole.html"
+        sessionStorage.setItem("files", JSON.stringify(files))
+    })
+    init()
+
+    function init() {
+        const img = document.getElementById("img")
+        img.src = files.img
+        $(img).attr({
+            style:files.imgRote
+        })
+        const index = parseInt(files.sex)
+        $(".select-sex>div").eq(index - 1).attr({
+            id: "active"
+        })
+        sessionStorage.setItem("faceToken", sessionStorage.getItem("faceToken"))
+        pageHeight()
+        stopPageSwiper()
+    }
+</script>
+
+</html>

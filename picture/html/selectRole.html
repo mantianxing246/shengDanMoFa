@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aiken的圣诞魔法</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <script>
+        var scale = window.screen.width / 750
+        document.write(
+            `<meta name="viewport" content="width=750, user-scalable=no, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}">`
+        )
+    </script>
+    <style>
+        .select-sex {
+            display: flex;
+            align-items: center;
+            justify-content:space-evenly;
+            font-size: 24px;
+            color: #78584c;
+            margin: 290px 0 46px;
+        }
+
+        .select-sex img {
+            width: 160px;
+        }
+
+        .select {
+            margin: 0 10.9vw 51px;
+            position: relative;
+            background: url("../images/kuang2.png") no-repeat;
+            background-size: 100% 100%;
+            height: 640px;
+            overflow: hidden;
+            padding: 6px;
+        }
+
+        .select>div {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .select img {
+            /* height: 640px; */
+            width: 100%;
+        }
+
+        .select-mode {
+            width: 340px;
+            height: 120px;
+            background: url("../images/btn.png") no-repeat;
+            background-size: 100% 100%;
+            margin: 82px auto 0px;
+            color: #fff;
+            font-size: 38px;
+            text-align: center;
+            line-height: 105px;
+        }
+
+        .hide {
+            display: none; 
+        }
+
+        .dialog,
+        .dialog2 {
+            width: 100vw;
+            height: 100vh;
+            background: rgba(4, 7, 31, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .dialog input {
+            width: 583px;
+            height: 176px;
+            background: url("../images/inputName.png") no-repeat;
+            background-size: 100% 100%;
+            display: block;
+            padding: 36px 110px 55px 60px;
+            box-sizing: border-box;
+            font-size: 40px;
+            margin: auto;
+        }
+
+        .dialog>div {
+            margin-top: 493px;
+            margin-bottom: 35px;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+        }
+
+
+        .dialog2 .ewm {
+            width: 506px;
+            height: 506px;
+            background-color: #0a182a;
+            margin: 327px auto 0;
+        }
+
+        .dialog2 .ewm-kuang {
+            background: url("../images/kuang3.png") no-repeat;
+            background-size: 100% 100%;
+            padding: 6px;
+            width: 506px;
+            height: 506px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ewm-kuang img {
+            width: 434px;
+            height: 434px;
+            display: block;
+        }
+
+        .dialog2 .ewm-ts {
+            width: 420px;
+            background: url("../images/erm-btn.png") no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            color: white;
+            font-size: 38px;
+            padding: 46px 44px 58px;
+            box-sizing: border-box;
+            margin: auto;
+            margin-top: 78px;
+            display: block;
+        }
+        .btn-zg {
+            animation: zg 2s ease;
+        }
+
+        @keyframes zg {
+            from {
+                background: url("../images/btn-zg.png") no-repeat;
+                background-size: 100% 100%;
+                width: 340px;
+                height: 120px;
+            }
+
+            to {
+                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="select-sex">
+            <!-- <img src="../images/template_man_1.png" alt="">
+            <img src="../images/template_man_2.png" alt="">
+            <img src="../images/template_man_3.png" alt=""> -->
+        </div>
+        <div style="overflow: hidden;position: relative;">
+            <div id="slider">
+                <!-- <div class="select">
+                    <div><img src="" alt="" id="img"></div>
+                </div> -->
+            </div>
+            <div class="loading">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        </div>
+        <div class="select-mode">
+            <div class="zg">生成您的照片</div>
+        </div>
+        <div style="height: 144px;"></div>
+    </div>
+    <div class="dialog" id="dialog">
+        <div>请输入您的姓名</div>
+        <input type="text" placeholder="请输入您的姓名" class="name">
+    </div>
+
+    <div class="dialog2" id="dialog2">
+        <div class="ewm">
+            <div class="ewm-kuang"><img src="" alt="" class="Img-size"></div>
+        </div>
+        <div class="ewm-ts">
+            扫描二维码
+            查看您的专属照片
+        </div>
+    </div>
+</body>
+<script src="../js/public.js"></script>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/touchslider.js"></script>
+<script src="../js/selectRole.js"></script>
+
+</html>
